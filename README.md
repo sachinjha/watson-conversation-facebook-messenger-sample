@@ -4,18 +4,18 @@ This application demonstrates how a Facebook messenger server application can us
 
 For more information about Conversation, see the [detailed documentation](http://www.ibm.com/watson/developercloud/doc/conversation/overview.shtml).
 
-For more information on Set up Facebook messenger and webhooks refer to the [documentation](https://developers.facebook.com/docs/messenger-platform/quickstart)  
+For more information on Set up Facebook messenger and webhook refer to the [documentation](https://developers.facebook.com/docs/messenger-platform/quickstart)  
 
-<b>To deploy this application you must have a Facebook account, a facebook messenger app, a Bluemix account and run some steps within Bluemix.</b>
+<b>To deploy and test this application you must have a Facebook account, a facebook messenger app, a Bluemix account and run some steps within Bluemix.</b>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<img src="readme_images/bluemix.png" width="200"/>](#bluemix)     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<img src="readme_images/local.png" width="200"/>](#local)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<img src="readme_images/bluemix.png" width="200"/>](#bluemix)     )
 
 ## How the app works
 Once the app is deployed and Facebook messenger server application configured and webhook registered, you can go to Facebook messenger and search for the bot using the name that you used to register your application.Following is the sequence of events after that.
 
-    you send message from messenger window to your chat bot
+    you send text message from messenger window to your chat bot
     the webhook api endpoint in the deployed app receives the request with message details 
-    It handles the request, invokes the conversation API and stores the context in memcached cache.
+    It handles the request, invokes the conversation API ,passing in any context stored in memcached and stores the context from conversation response in memcached cache.
     It sends response to the messenger client based on conversation API response.
     
   
@@ -25,7 +25,7 @@ The conversation service is desiged to act as a share trading assistant. You can
     I want to sell shares
     I want to buy shares of IBM
 
-This sample is not a guide on conversation service. For that refer to other samples. The intent of this sample is to show how to integrate facebook messenger app with conversation service and how to maintain context between the api calls.
+This sample is not a guide on conversation service. For that refer to other samples. The intent of this sample is to show how to integrate facebook messenger app with conversation service and how to maintain context between the chat responses.
 
 <a name="bluemix">
 # Getting Started using Bluemix
@@ -80,7 +80,7 @@ For more information on workspaces, see the full  [Conversation service  documen
 
 2 Go to the **Manage** menu item and select **Launch Tool**. This opens a new tab in your browser, where you are prompted to login if you have not done so before. Use your Bluemix credentials.
 
-3 If you are deploying through Bluemix, download the [exported JSON file](https://raw.githubusercontent.com/watson-developer-cloud/conversation-simple/master/training/car_workspace.json) that contains the Workspace contents. If deploying locally,  this was cloned and is in the training folder (training/car_workspace.json).
+3 If you are deploying through Bluemix, download the [exported JSON file](https://raw.githubusercontent.com/sachinjha/watson-conversation-facebook-messenger-sample/master/training/trading_workspace.json) that contains the Workspace contents. 
 
 4 Select the import icon: ![](readme_images/importGA.PNG). Browse to (or drag and drop) the JSON file. Choose to import **Everything(Intents, Entities, and Dialog)**. Then select **Import** to finish importing the workspace.
 
