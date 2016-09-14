@@ -1,0 +1,18 @@
+---
+declared-services:
+  conversation-service:
+    label: conversation
+    plan: free
+  memcached-service:
+    label: memcached
+    plan: free
+applications:
+- name: conversation-facebook-sample
+  command: npm start
+  path: .
+  memory: 256M
+  instances: 1
+  services:
+  - conversation-service
+  - memcached-service
+  

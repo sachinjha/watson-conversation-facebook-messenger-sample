@@ -1,0 +1,7 @@
+{
+    "appSecret": "<FACEBOOK_APP_SECRET>",
+    "pageAccessToken": "<PAGE_ACCESS_TOKEN>",
+    "validationToken": "<WEBHOOK_VERIFY_TOKEN>",
+    "serverURL": "https://<DEPLOYED_APPLICATION_ROUTE>",
+    "workspace_id" : "<CONVERSATION_WORKSPACE_ID>"
+}
