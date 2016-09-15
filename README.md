@@ -96,71 +96,36 @@ In the Details UI, copy the 36 character UNID **ID** field. This is the **Worksp
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![](readme_images/workspaceid.PNG)
 
+<a name="env">
+## Adding environment variables in Bluemix
+</a>
 
-## Update config values with service credentials and conversation workspaceId
+1 In Bluemix, open the application from the Dashboard. Select **Environment Variables**.
+
+2 Select **USER-DEFINED**.
+
+3 Select **ADD**.
+
+4 Add a variable with the name **WORKSPACE_ID**. For the value, paste in the Workspace ID you [copied earlier](#workspaceID). Select **SAVE**.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](readme_images/env.PNG)
+
+5 Restart your application.
 
 
-* Update Following fields in  <PROJECT_ROOT>/config/default.json 
-      - workspace_id  with workspace_id copied [above](#workspaceId)
-      - serverURL : Set the value to https://<DEPLOYED_APPLICATION_ROUTE>   
-      - <a name="validationToken">validationToken</a> : Set the value to some secret string which and use the same during [Facebook app Registration](#facebook) step related to Webhook validation token. e.g. "my_secret_validation_token"
-      - 
-* Update the service credentials in respective files. Go [here](#credentials) to learn how to view the credentials.
-      - cache.js with memcached_service credentials
-      - conversation.js with conversation_service credentials.
+
+## Add environment Variables for Facebook app registration and workspaceId
+
+
+*  set the WORKSPACE_ID with value copied above. [environment variable](#env).
+*  set <a name="validationToken">MESSENGER_VALIDATION_TOKEN</a> : Set the value to some secret string which and use the same during [Facebook app Registration](#facebook) step related to Webhook validation token. e.g. "my_secret_validation_token"
+*  set SERVER_URL : Set the value to https://< DEPLOYED_APPLICATION_ROUTE >
+
 
 <a name="usingCloudfoundry">
-## Redeploy the APP using  Cloudfoundry CLI tool 
+## Restart the App from the dashboard.
 </a>
 
-To build the application:
-
-1 Download and install the [Cloudfoundry CLI](https://github.com/cloudfoundry/cli) tool.
-
-2 Git clone the project `https://github.com/sachinjha/watson-conversation-facebook-messenger-sample`
-
-3 Navigate to the `watson-conversation-facebook-messenger-sample` folder
-
-4 
-
-4 Connect to Bluemix in the command-line tool:
-
- For US Region
-
- ```sh
-
- $ cf api https://api.ng.bluemix.net
-
- ```
-
- ```sh
-
- $ cf login -u <your user ID>
-
- ```
-
-
-
-5 Push it live:
-
- ```sh
-
- $ cf push <application-name>
-
- ```
- 
-
-
-<a name="credentials">
-# Service Credentials
-</a>
-
-1 Go to the Bluemix Dashboard and select the application instance instance. Once there, Go to the **Connections** menu and then click on the **Service Credentials** menu item for the service whose credentials you want to read.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](readme_images/credentials.PNG)
-
-
-2 Copy the credentials (or remember this location) for later use.
 
 <a name="facebook">
 ## Facebook messenger app registration 
@@ -173,14 +138,14 @@ Follow the steps described [here](https://developers.facebook.com/docs/messenger
     - set verify Token to validation token value chosen [above](#validationToken).
 * Copy the <a name="pageAccessToken">page access Token </a> generated in Step 3. Get page access token.
 
-## Update config values and redeploy app
+## Add Facebook registration related environment variables to Bluemix app.
 
-* Update following fields in config/default.json
-    - set appSecret with value copied [here](#appsecret)
-    - set pageAccessToken with value copied [above](#pageAccessToken)
+* See [here](#env) how to add environemnt variables.
+    - set MESSENGER_APP_SECRET with value copied [here](#appsecret)
+    - set MESSENGER_PAGE_ACCESS_TOKEN with value copied [above](#pageAccessToken)
   
 
-## Redeploy the app following the steps described [earlier](#usingCloudfoundry)
+## Restart the app from dashboard. 
 
 ## Testing the integration 
 * Login to Facebook Messenger and search the bot with the name used during [Facebook Messenger app registration](#facebook)
