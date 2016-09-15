@@ -1,8 +1,15 @@
 var memjs = require('memjs');
+var vcapServices = require('./vcapServices')
 
-var mc = memjs.Client.create('<MEMCACHED_INSTANCE_SERVER_URL>:<MEMCACHED_INSTANCE_PORT>', {
-  username: '<MEMCHACHED_INSTANCE_USERNAME>',
-  password: '<MEMCHACHED_INSTANCE_PASSWORD>'
+var memSvcCreds  = vcapServices.memcachedcloud[0].credentials
+
+var username  = memSvcCreds.username 
+var password = memSvcCreds.password 
+var server = 	memSvcCreds.servers
+
+var mc = memjs.Client.create(server, {
+  username: username,
+  password: password
 });    
 
 function get ( key, callback){

@@ -8,13 +8,22 @@
 //Create the service wrapper
 
 var watson = require( 'watson-developer-cloud')
+var vcapServices = require('./vcapServices')
+
+
+var conversationSvcCreds = vcapServices.conversation[0].credentials
+var username  = conversationSvcCreds.username 
+var password = conversationSvcCreds.password 
+	
+
 var conversation = watson.conversation( {
   url: 'https://gateway.watsonplatform.net/conversation/api',
-  username: process.env.CONVERSATION_USERNAME || '<CONVERSATION_USER_NAME>',
-  password: process.env.CONVERSATION_PASSWORD || '<CONVERSATION_PASSWORD>',
+  username: username ,
+  password: password ,
   version_date: '2016-07-11',
   version: 'v1'
 } );
+
 
 
 function getResponse( payload, callback){
