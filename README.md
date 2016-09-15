@@ -33,7 +33,7 @@ This sample is not a guide on conversation service. For that refer to other samp
 # Getting Started using Bluemix
 </a>
 
-![](readme_images/Deploy on Bluemix - simple app22.png)
+![](readme_images/Deploy on Bluemix - simple app2.png)
 
 ## Before you begin
 1 Ensure that you have a [Bluemix account](https://console.ng.bluemix.net/registration/).
